@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-md-4 py-5">
+            <h2>Login To Multiverse</h2>
+
+            <div role="alert" class="alert-warning" th:if="${invalid}" th:text="${invalid}"></div>
+            <div role="alert" class="alert-warning" th:if="${invalidAccount}" th:text="${invalidAccount}"></div>
+
+            <form action="#" method="post" th:action="@{/login}">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username"
+                           th:classappend="${invalidUsername} ? 'invalid'" placeholder="Enter Username" required>
+                    <span th:if="${invalidUsername}" th:text="${invalidUsername}" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" th:classappend="${invalidPassword} ? 'invalid'"
+                           class="form-control" placeholder="Enter password" required>
+                    <span th:if="${invalidPassword}" th:text="${invalidPassword}" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" name="remember-me" id="remember-me">
+                    <label class="form-check-label" for="remember-me">Remember Me?</label>
+                </div>
+                <button type="submit" class="btn btn-lg btn-block btn-primary">Log in</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
